@@ -9,6 +9,14 @@ export default class Card extends React.Component {
     loading: true,
   };
 
+//Handlers-------------------------------------------------------------------------
+
+  /**
+   * @name handleLoad
+   * @description when image is loaded is called, change the state.loading property to false
+   * @type method
+   * */
+
   handleLoad = () => {
     this.setState({ loading: false });
   };

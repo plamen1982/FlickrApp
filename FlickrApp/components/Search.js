@@ -23,8 +23,6 @@ export default function Search({ tag, handleTagChange } ) {
     handleTagChange(newValue);
   }
 
-  //Main------------------------------------------------------------------------------
-
     return (
     <View style={styles.textInputContainer}>
         <TextInput

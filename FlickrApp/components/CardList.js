@@ -2,7 +2,14 @@ import React from "react";
 import { FlatList } from "react-native";
 
 export default function CardList({ photos }) {
-    
+
+   //Renders-------------------------------------------------------------------------  
+/**
+ * @render View component
+ * @name renderImageItem
+ * @description called every time when we need to render an item from array
+ * @type method 
+ */
   renderImageItem = ({ item }) => {
     const { url, tag } = item;
 
