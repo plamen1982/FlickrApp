@@ -2,12 +2,7 @@ import React from "react";
 import { StyleSheet, View, FlatList, Image, Text } from "react-native";
 import photos from "./utils/publicPhotos";
 import Card from "./components/Card";
-
-const getImageFromId = id => {
-  return `https://unsplash.it/${600}/${600}?image=${id}`;
-};
-
-// import case_insensitive_comp  from './utils/helpers';
+import CardList from "./components/CardList";
 
 import Search from "./components/Search";
 import CardGrid from "./components/CardGrid";
@@ -50,9 +45,9 @@ export default class App extends React.Component {
    * @type {method}
    */
   handleTagChange = newValue => {
-    debugger;
-    let { photos } = this.state;
-    console.log(photos);
+
+    const { photos } = this.state;
+
     this.setState({
       photos: photos.filter(photo => {
         const { tag } = photo;
@@ -63,21 +58,6 @@ export default class App extends React.Component {
     });
   };
 
-  renderImageItem = ({ item }) => {
-    debugger;
-    const { url, tag } = item;
-    //check item.url - ok
-    return (
-      <View>
-        <Card
-          image={{
-            uri: url
-          }}
-          tag={tag}
-        />
-      </View>
-    );
-  };
 
   //Main------------------------------------------------------------------------------
 
@@ -90,13 +70,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.appContainer}>
         <Search tag={tag} handleTagChange={this.handleTagChange} />
-        <View style={styles.imagesContainer}>
-          <FlatList
-            data={photos}
-            keyExtractor={keyExtractor}
-            renderItem={this.renderImageItem}
-          />
-        </View>
+        <CardList photos={photos}/>
       </View>
     );
   }
@@ -108,14 +82,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-
-  imagesContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center"
-  },
-
   list: {
     alignItems: "center"
   }
