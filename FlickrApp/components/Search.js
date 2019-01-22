@@ -1,64 +1,75 @@
 import React from "react";
-import { StyleSheet, Text, View, TextInput } from "react-native";
+import { StyleSheet, View, TextInput } from "react-native";
 
 /**
  * @render react
- * @name App
- * @description Stateless Component
+ * @name Search
+ * @description
  * <Search />
  */
 
-export default function Search({ tag, handleTagChange } ) {
+export default class Search extends React.Component {
+  state = {
+    tag: ""
+  };
 
-//Handlers-------------------------------------------------------------------------
+  //LifeCycle Hooks------------------------------------------------------------------
 
-/**
- * @name handleTagChange 
- * @description send the data to parent component
- * @params newValue
- * @type {closer/method} 
- */
+  // componentWillUpdate()  {
+  //   this.setState({tag: ''})
+  // }
+
+  //Handlers-------------------------------------------------------------------------
+
+  /**
+   * @name handleTagChange
+   * @description send the data to parent component
+   * @params newValue
+   * @type {closer/method}
+   */
 
   handleTagChange = newValue => {
-    handleTagChange(newValue);
-  }
+    console.log(newValue);
+    const { handleTagChange } = this.props;
 
+    if (!newValue) {
+      return;
+    }
+
+    this.setState({ tag: newValue });
+    handleTagChange(newValue);
+  };
+
+  render() {
+    const { tag } = this.state;
     return (
-    <View style={styles.textInputContainer}>
+      <View style={styles.textInputContainer}>
         <TextInput
-            style={styles.textInput}
-            underlineColorAndroid="transparent"
-            onChangeText={this.handleTagChange}
-            value={tag}
-            placeholder="seatch by tag"
+          style={styles.textInput}
+          onChangeText={this.handleTagChange}
+          value={tag}
+          placeholder="search hero/villain by tag"
         />
-    </View>
+      </View>
     );
   }
+}
 
 const styles = StyleSheet.create({
   textInputContainer: {
     borderColor: "#D6D7DA",
-    borderRadius: 2,
+    borderRadius: 5,
     borderWidth: 1,
     marginBottom: 5,
-    marginTop: 30,
+    marginTop: 30
   },
   textInput: {
-    color: 'white',
     height: 40,
     width: 300,
     marginTop: 20,
     marginHorizontal: 20,
     paddingHorizontal: 10,
-    alignSelf: 'center',
-    },
-  textInputTitle: {
-    fontSize: 14,
-    fontWeight: "bold",
-    marginBottom: 5,
-    borderRadius: 7,
-    borderColor: "white",
-    borderWidth: 2,
-  },
+    alignSelf: "center",
+    color: "#001717"
+  }
 });

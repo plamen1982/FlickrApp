@@ -1,11 +1,9 @@
 import React from "react";
-import { StyleSheet, View, FlatList, Image, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import photos from "./utils/publicPhotos";
-import Card from "./components/Card";
 import CardList from "./components/CardList";
 
 import Search from "./components/Search";
-import CardGrid from "./components/CardGrid";
 
 /**
  * @render react
@@ -14,12 +12,13 @@ import CardGrid from "./components/CardGrid";
  * <App />
  */
 
-const keyExtractor = item => item.photoId.toString();
-
 export default class App extends React.Component {
-  state = {
-    photos
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      photos
+    };
+  }
 
   //LifeCycle Hooks------------------------------------------------------------------
 
@@ -35,6 +34,17 @@ export default class App extends React.Component {
     });
   }
 
+  //Helpers-------------------------------------------------------------------------
+  /**
+   * @return trufy/falsy value
+   * @name isTwoStringsMatched
+   * @description when two strings are compared return true or false if they have partially matching
+   * @type {method}
+   */
+  isTwoStringsMatched(str1, str2) {
+    return str1.toLowerCase().localeCompare(str2.toLowerCase());
+  }
+
   //Handlers-------------------------------------------------------------------------
 
   /**
@@ -45,32 +55,30 @@ export default class App extends React.Component {
    * @type {method}
    */
   handleTagChange = newValue => {
-
+    debugger;
     const { photos } = this.state;
 
+    let photosAfterSearch = photos.filter(photo => {
+      let tag = photo.tag;
+      if (this.isTwoStringsMatched(tag, newValue)) {
+        return photo;
+      }
+    });
+
     this.setState({
-      photos: photos.filter(photo => {
-        const { tag } = photo;
-        if (tag.toLowerCase().localeCompare(newValue.toLowerCase())) {
-          return photo;
-        }
-      })
+      photos: photosAfterSearch
     });
   };
-
 
   //Main------------------------------------------------------------------------------
 
   render() {
-    const {
-      photos,
-      photos: { tag }
-    } = this.state;
- 
+    const { photos } = this.state;
+
     return (
       <View style={styles.appContainer}>
-        <Search tag={tag} handleTagChange={this.handleTagChange} />
-        <CardList photos={photos}/>
+        <Search handleTagChange={this.handleTagChange} />
+        <CardList photos={photos} />
       </View>
     );
   }

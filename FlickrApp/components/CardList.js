@@ -1,9 +1,13 @@
 import React from "react";
-import { FlatList } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
+import Card from './Card';
+
+const keyExtractor = item => item.photoId.toString();
 
 export default function CardList({ photos }) {
 
-   //Renders-------------------------------------------------------------------------  
+//Handlers-------------------------------------------------------------------------  
+
 /**
  * @render View component
  * @name renderImageItem

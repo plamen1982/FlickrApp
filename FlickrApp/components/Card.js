@@ -45,12 +45,9 @@ export default class Card extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    marginLeft: 3,
     width: width/1.05,
     aspectRatio: 1,
-    backgroundColor: 'rgba(0,0,0,0.02)',
     borderRadius: 15,
-    borderColor: "white",
     borderWidth: 2,
     marginBottom: 10,
   },
@@ -59,7 +56,7 @@ const styles = StyleSheet.create({
       top: 5,
       left: 5,
       fontSize: 18,
-      color: 'skyblue',
+      color: '#0f0101',
       fontWeight: 'bold',
   }
 });
