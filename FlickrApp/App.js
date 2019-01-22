@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, TextInput } from "react-native";
 import photos from './utils/publicPhotos';
-
+import { case_insensitive_comp} from './utils/helpers';
 
 
 /**
@@ -15,17 +15,16 @@ export default class App extends React.Component {
 
   state = {
     photos,
-    searchedTag: '',
   }
 
 //LifeCycle Hooks------------------------------------------------------------------
 
 /**
  * @name componentWillMount 
- * @description when comopnent is already mounted is executed
+ * @description when comopnent wiill mount is executed
  * @type {method} 
  */
-componentDidMount() {
+componentWillUpdate() {
   const { photos } = this.state;
   photos.forEach(photo => {
     console.log(photo);
@@ -34,6 +33,7 @@ componentDidMount() {
 
 
 //Handlers-------------------------------------------------------------------------
+
 /**
  * @return {Array} new state
  * @name handleTagChange 
@@ -42,15 +42,19 @@ componentDidMount() {
  * @type {method} 
  */
   handleTagChange = newValue => {
-    const { photos } = this.state;
+    debugger;
+    let { photos } = this.state;
+    console.log(photos)
     this.setState({
       photos: photos.filter(photo => {
-        const { searchedTag } = photo;
-        return searchedTag === newValue;
+        let { tag } = photo;
+        case_insensitive_comp(tag, newValue);
       })
     });
 
   }
+
+  //Main------------------------------------------------------------------------------
 
   render() {
     const { photos: { tag } } = this.state;
@@ -71,6 +75,9 @@ componentDidMount() {
 }
 
 const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1
+  },
   textInputContainer: {
     borderColor: "#D6D7DA",
     borderRadius: 2,
