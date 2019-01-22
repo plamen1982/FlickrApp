@@ -1,6 +1,6 @@
 export default [
     {
-        id: "tag:flickr.com,2005:/photo/31894532355",
+        photoId: 0,
         published: "2019-01-22T07:47:27Z",
         updated: "2019-01-22T07:47:27Z",
         dateTaken: "2019-01-21T23:47:27-08:00",
@@ -8,7 +8,7 @@ export default [
         url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/ThumbChar_192x291_Atom_556657d8c8eb29.95534479.jpg?itok=LgEEUm5U',
     },
     {
-        id: "tag:flickr.com,2005:/photo/31894531056",
+        photoId: 1,
         published: "2019-01-22T07:47:21Z",
         updated: "2019-01-22T07:47:21Z",
         dateTaken: "2019-01-21T23:47:21-08:00",
@@ -16,7 +16,7 @@ export default [
         url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/ThumbChar_192x291_BirBarda_574495f48e4075.27470755.jpg?itok=gnv38gX9',
     },
     {
-        id: "tag:flickr.com,2005:/photo/31894532357",
+        photoId: 2,
         published: "2019-01-22T07:47:27Z",
         updated: "2019-01-22T07:47:27Z",
         dateTaken: "2019-01-21T23:47:27-08:00",
@@ -24,7 +24,7 @@ export default [
         url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/catwoman_192x291_53c5877f374ec6.59469115.jpg?itok=dRrvyS7M',
     },
     {
-        id: "tag:flickr.com,2005:/photo/31894532358",
+        photoId: 3,
         published: "2019-01-22T07:47:27Z",
         updated: "2019-01-22T07:47:27Z",
         dateTaken: "2019-01-21T23:47:27-08:00",
@@ -32,19 +32,28 @@ export default [
         url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/constantine_192x291_53c5878ac85f71.24976215.jpg?itok=ultt9xOs',
     },
     {
-        id: "tag:flickr.com,2005:/photo/31894532359",
+        photoId: 4,
         published: "2019-01-22T07:47:27Z",
         updated: "2019-01-22T07:47:27Z",
         dateTaken: "2019-01-21T23:47:27-08:00",
         tag: 'happy',
-        url: 'https://farm5.staticflickr.com/4917/31894532357_3830f47aec_b.jpg',
+        url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/ThumbChar_192x192_Firestorm_alt_556e3ee413ba08.29633435.jpg?itok=55qn8bBy'
     },
     {
-        id: "tag:flickr.com,2005:/photo/31894532360",
+        photoId: 5,
         published: "2019-01-22T07:47:27Z",
         updated: "2019-01-22T07:47:27Z",
         dateTaken: "2019-01-21T23:47:27-08:00",
-        tag: 'friendship',
+        tag: 'fear',
         url: 'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/deadman_192x291_53c587a09601f9.70066359.jpg?itok=N2OI4nX-',
     },
+    {
+        photoId: 6,
+        name: 'Green Arrow',
+        alter_ego: 'Oliver Queen',
+        first_appearance: 'MORE FUN COMICS #73',
+        tag: 'fresh',
+        url:
+          'https://www.dccomics.com/sites/default/files/styles/comics320x485/public/greenarrow_192x291_53c5882189d358.67363982.jpg?itok=efWNrqMC',
+      },
 ];

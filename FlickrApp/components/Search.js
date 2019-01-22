@@ -13,7 +13,6 @@ export default function Search({ tag, handleTagChange } ) {
 //Handlers-------------------------------------------------------------------------
 
 /**
- * @return {Array} new state
  * @name handleTagChange 
  * @description send the data to parent component
  * @params newValue
@@ -28,29 +27,26 @@ export default function Search({ tag, handleTagChange } ) {
 
     return (
     <View style={styles.textInputContainer}>
-        <Text style={styles.textInputTitle}>search by tag</Text>
         <TextInput
             style={styles.textInput}
             underlineColorAndroid="transparent"
             onChangeText={this.handleTagChange}
             value={tag}
+            placeholder="seatch by tag"
         />
     </View>
     );
   }
 
 const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1
-  },
   textInputContainer: {
     borderColor: "#D6D7DA",
     borderRadius: 2,
     borderWidth: 1,
-    marginBottom: 5
+    marginBottom: 5,
+    marginTop: 30,
   },
   textInput: {
-    backgroundColor: 'grey',
     color: 'white',
     height: 40,
     width: 300,
@@ -62,6 +58,9 @@ const styles = StyleSheet.create({
   textInputTitle: {
     fontSize: 14,
     fontWeight: "bold",
-    marginBottom: 5
+    marginBottom: 5,
+    borderRadius: 7,
+    borderColor: "white",
+    borderWidth: 2,
   },
 });
