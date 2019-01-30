@@ -7,18 +7,6 @@ import { StyleSheet, View, TextInput } from "react-native";
  * @description
  * <Search />
  */
-
-export default class Search extends React.Component {
-  state = {
-    tag: ""
-  };
-
-  //LifeCycle Hooks------------------------------------------------------------------
-
-  // componentWillUpdate()  {
-  //   this.setState({tag: ''})
-  // }
-
   //Handlers-------------------------------------------------------------------------
 
   /**
@@ -28,31 +16,17 @@ export default class Search extends React.Component {
    * @type {closer/method}
    */
 
-  handleTagChange = newValue => {
-    console.log(newValue);
-    const { handleTagChange } = this.props;
+export default function Search({ handleTagChange }) {
 
-    if (!newValue) {
-      return;
-    }
-
-    this.setState({ tag: newValue });
-    handleTagChange(newValue);
-  };
-
-  render() {
-    const { tag } = this.state;
-    return (
-      <View style={styles.textInputContainer}>
-        <TextInput
-          style={styles.textInput}
-          onChangeText={this.handleTagChange}
-          value={tag}
-          placeholder="search hero/villain by tag"
-        />
-      </View>
-    );
-  }
+  return (
+    <View style={styles.textInputContainer}>
+      <TextInput
+        style={styles.textInput}
+        onSubmitEditing={handleTagChange}
+        placeholder="search hero/villain by tag"
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

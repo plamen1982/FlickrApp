@@ -4,6 +4,7 @@ import photos from "./utils/publicPhotos";
 import CardList from "./components/CardList";
 
 import Search from "./components/Search";
+import { stringify } from "qs";
 
 /**
  * @render react
@@ -28,10 +29,7 @@ export default class App extends React.Component {
    * @type {method}
    */
   componentWillUpdate() {
-    const { photos } = this.state;
-    photos.forEach(photo => {
-      console.log(photo);
-    });
+    // this.setState({photos})
   }
 
   //Helpers-------------------------------------------------------------------------
@@ -42,7 +40,7 @@ export default class App extends React.Component {
    * @type {method}
    */
   isTwoStringsMatched(str1, str2) {
-    return str1.toLowerCase().localeCompare(str2.toLowerCase());
+    return str1.toLowerCase() === str2.toLowerCase();
   }
 
   //Handlers-------------------------------------------------------------------------
@@ -55,12 +53,13 @@ export default class App extends React.Component {
    * @type {method}
    */
   handleTagChange = newValue => {
-    debugger;
+    const { nativeEvent : { text } } = newValue;
     const { photos } = this.state;
 
     let photosAfterSearch = photos.filter(photo => {
       let tag = photo.tag;
-      if (this.isTwoStringsMatched(tag, newValue)) {
+
+      if (this.isTwoStringsMatched(tag, text)) {
         return photo;
       }
     });
